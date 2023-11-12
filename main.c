@@ -16,6 +16,7 @@ int main(int ac, char **argv)
 
     while(1)
     {
+////////////// printing shell prpmpet and taking commant input.
         printf("%s", shell_symbol);
         input_length = getline(&user_input_line, &len, stdin);
         if (input_length == (-1))
@@ -23,17 +24,15 @@ int main(int ac, char **argv)
             printf("Shell terminated\n");
             return (-1);
         }
-//////////////// allocating space for the copy
+//////////////// making the copy of user input
         user_input_cpy = malloc(sizeof(char) * input_length);
         if (user_input_cpy == NULL)
         {
             perror("tsh: memory allocation error");
             return (-1);
         }
-//////////////////////////////////////////////////////
         strcpy(user_input_cpy, user_input_line);
-///////////////////////////////////////////////////////////////////
-        
+////// getting the number of tokens:
         token = strtok(user_input_line, string_seperator);
         while (token != NULL)
         {
@@ -42,7 +41,7 @@ int main(int ac, char **argv)
         }
         tokens++;
 
-////////////////////////////////////  storing tokens in the aaray of strings
+////////////////////////////////////  storing each token in array
         argv = malloc(sizeof(char *) * tokens);
 
         token = strtok(user_input_cpy, string_seperator);
