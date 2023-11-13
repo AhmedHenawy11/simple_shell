@@ -54,6 +54,10 @@ int main(int ac, char **argv)
             token = strtok(NULL, string_seperator);
         }
         argv[i] = NULL;
+    //executing command
+        execmd(argv);
+
+
 
 
         printf("%s\n",user_input_line);
@@ -62,7 +66,6 @@ int main(int ac, char **argv)
             free(user_input_line);
             user_input_line = NULL; 
         }
-/////////////////////////////////////////////////////////////////////////////////
         free(user_input_cpy);
     }
     return (0);

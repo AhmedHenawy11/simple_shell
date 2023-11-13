@@ -75,7 +75,7 @@ int main(void) {
         for (i = 0; tokenized_input[i] != NULL; i++) {
             printf("%s\n", tokenized_input[i]);
         }
-
+        execmd(tokenized_input);
         /* Free memory allocated for tokens */
         free_tokens(tokenized_input);
 
