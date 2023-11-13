@@ -1,17 +1,14 @@
 #include "main.h"
 
 
-void execmd(char **argv)
-{
-    char *cmd = NULL;
+void execmd(char **argv) {
+    char *cmd = NULL, *actual_command = NULL;
 
-    if (argv)
-    {
+    if (argv) {
         cmd = argv[0];
-        if (execve(cmd, argv, NULL) == -1)
-        {
+        actual_command = command_path(cmd);
+        if (execve(actual_command, argv, NULL) == -1) {
             perror("Not found:");
         }
     }
-    
 }
