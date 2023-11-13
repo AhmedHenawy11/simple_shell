@@ -7,8 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
+
 void execmd(char **argv);
 char *command_path(char *command);
 
