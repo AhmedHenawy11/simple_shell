@@ -9,7 +9,7 @@
  * Return: void
  */
 
-void add_to_history(const char *command)
+void add_to_history(user_input_line,char  *command_history,int  history_count);
 {
 
 
@@ -30,7 +30,7 @@ void add_to_history(const char *command)
  * Return: void
  */
 
-void display_history(void)
+void display_history(char* command_history, int history_count);
 {
 	char *command_history[MAX_HISTORY_SIZE];
 	int history_count = 0;

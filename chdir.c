@@ -29,9 +29,6 @@ void change_directory(const char *directory) {
         if (setenv("PWD", getcwd(NULL, 0), 1) == -1) {
             perror("cd: setenv failed");
         }
-
-        // Add the command to the history
-        add_to_history(new_directory);
     }
 
     free(current_directory);
