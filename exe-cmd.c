@@ -7,8 +7,14 @@ void execmd(char **argv) {
     if (argv) {
         cmd = argv[0];
         actual_command = command_path(cmd);
+        if (actual_command == NULL) {
+            fprintf(stderr, "%s: %d: %s: not found\n", argv[0], getpid(), cmd);
+            exit(EXIT_FAILURE);
+        }
+
         if (execve(actual_command, argv, NULL) == -1) {
-            perror("Not found:");
+            perror("execve");
+            exit(EXIT_FAILURE);
         }
     }
 }
