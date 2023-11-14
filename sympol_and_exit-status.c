@@ -1,12 +1,19 @@
 #include "main.h"
 
+/**
+ * terminate_shell - exiting henawy's shell
+ * return : terminate in success
+ */
 
-
-void terminate_shell() {
-    // You can include any cleanup or finalization code here before exiting
-    exit(EXIT_SUCCESS);
+void terminate_shell(void)
+{
+	exit(EXIT_SUCCESS);
 }
-
-void shell_sympol() {
-    printf("(Henawy's_shell) $ ");
+/**
+ * shell_sympol - (Henawy's_shell)
+ * return : void
+ */
+void shell_sympol(void)
+{
+	printf("(Henawy's_shell) $ ");
 }

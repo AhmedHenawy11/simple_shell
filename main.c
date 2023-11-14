@@ -1,18 +1,29 @@
 #include "main.h"
 
-int main(void) {
-    while (1) {
-        shell_sympol();
+/**
+ * main - The main function of the  (Henawy's_shell).
+ *
+ * Description: runs an interactive shell,
+ * continuously prompting the user forcommands,
+ * splitting them, and executing the corresponding actions.
+ * Return: terminating the shell.
+ */
 
-        char *user_input_line = get_user_input_line();
-        int tokens = 0;
-        char **cmd_argv = tokenize_user_input(user_input_line, &tokens);
+int main(void)
+{
+	while (1)
+	{
+		shell_sympol();
 
-        execute_command(user_input_line, cmd_argv, tokens);
+		char *user_input_line = get_user_input_line();
+		int tokens = 0;
+		char **cmd_argv = tokenize_user_input(user_input_line, &tokens);
 
-        free(user_input_line);
-        free_cmd_argv(cmd_argv, tokens);
-    }
+		execute_command(user_input_line, cmd_argv, tokens);
 
-    return 0;
+		free(user_input_line);
+		free_cmd_argv(cmd_argv, tokens);
+	}
+
+	return (0);
 }
