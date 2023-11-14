@@ -12,6 +12,7 @@
 #define MAX_HISTORY_SIZE 10
 
 
+extern char **environ;
 
 
 void execmd(char **argv);
@@ -28,6 +29,7 @@ void shell_sympol(void);
 char *get_user_input_line();
 char **tokenize_user_input(char *user_input_line, int *tokens);
 void execute_command(char *user_input_line, char **cmd_argv, int tokens);
+void print_environment(void);
 
-#endif  
+#endif
 

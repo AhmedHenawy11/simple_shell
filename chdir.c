@@ -1,31 +1,41 @@
 #include "main.h"
 
+/**
+ * change_directory - executing the change directory command (cd)
+ * @directory: name of directory
+ * Return: directory if success
+ */
 
-void change_directory(const char *directory) {
+void change_directory(const char *directory)
+{
     char *new_directory;
 
-    if (directory == NULL || strcmp(directory, "-") == 0) {
-        // If no argument or argument is "-", change to the home directory
+    if (directory == NULL || strcmp(directory, "-") == 0)
+    {
         new_directory = getenv("HOME");
-        if (new_directory == NULL) {
+        if (new_directory == NULL)
+        {
             perror("cd: HOME not set");
             return;
         }
-    } else {
+    } else
+    {
         new_directory = (char *)directory;
     }
 
     char *current_directory = getcwd(NULL, 0);
 
-    if (current_directory == NULL) {
+    if (current_directory == NULL)
+    {
         perror("cd: getcwd failed");
         return;
     }
 
-    if (chdir(new_directory) == -1) {
+    if (chdir(new_directory) == -1)
+    {
         perror("cd");
-    } else {
-        // Update the PWD environment variable
+    } else
+    {
         if (setenv("PWD", getcwd(NULL, 0), 1) == -1) {
             perror("cd: setenv failed");
         }
