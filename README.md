@@ -7,13 +7,9 @@
 ## Table of contents
  - **What is the shell?**
  - **About this project**
- - **Essential Functionalities of the Simple Shell**
- - **File description**
- - **List of allowed functions and system calls for this project**
+ - **Features**
  - **USAGE**
  - **Example of Usage**
- - **Bugs**
- - **TEAM**
  ****
  ## What is the shell?
 The shell is a program that takes commands from the keyboard via the terminal, and gives them to the operating system to perform.\
