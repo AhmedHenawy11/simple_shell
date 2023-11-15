@@ -20,6 +20,9 @@ void execmd(char **argv)
 			exit(EXIT_FAILURE);
 		}
 
+		argv[0] = actual_command;
+		argv[1] = NULL;
+
 		if (execve(actual_command, argv, NULL) == -1)
 		{
 			perror("execve");
