@@ -12,7 +12,7 @@
 
 char *build_file_path(char *path_token, char *command, int command_length)
 {
-	int directory_length = strlen(path_token);
+	int directory_length = _strlen(path_token);
 	char *file_path = malloc(command_length + directory_length + 2);
 	struct stat buffer;
 
@@ -22,9 +22,9 @@ char *build_file_path(char *path_token, char *command, int command_length)
 		return (NULL);
 	}
 
-	strcpy(file_path, path_token);
-	strcat(file_path, "/");
-	strcat(file_path, command);
+	_strcpy(file_path, path_token);
+	_strcat(file_path, "/");
+	_strcat(file_path, command);
 
 
 	if (stat(file_path, &buffer) == 0)

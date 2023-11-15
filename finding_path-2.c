@@ -7,12 +7,12 @@
  */
 char *get_path_copy()
 {
-	char *path = getenv("PATH");
+	char *path = my_getenv("PATH");
 	char *path_copy;
 
 	if (path)
 	{
-		path_copy = strdup(path);
+		path_copy = _strdup(path);
 
 		if (!path_copy)
 		{

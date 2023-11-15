@@ -7,9 +7,9 @@
  */
 void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 {
-	if (strlen(user_input_line) > 1)
+	if (_strlen(user_input_line) > 1)
 	{
-		if (strcmp(cmd_argv[0], "cd") == 0)
+		if (_strcmp(cmd_argv[0], "cd") == 0)
 		{
 						if (cmd_argv[1] != NULL)
 						{
@@ -19,11 +19,11 @@ void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 								change_directory(NULL);
 						}
 		}
-		else if (strcmp(cmd_argv[0], "exit") == 0)
+		else if (_strcmp(cmd_argv[0], "exit") == 0)
 		{
 			terminate_shell();
 		}
-		else if (strcmp(cmd_argv[0], "env") == 0)
+		else if (_strcmp(cmd_argv[0], "env") == 0)
 		{
 			print_environment();
 		}
@@ -42,7 +42,7 @@ void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 			{
 				execmd(cmd_argv);
 				perror("Execution failed");
-				fprintf(stderr, "%s: command not found\n", cmd_argv[0]);
+				_fprintf(stderr, "%s: command not found\n", cmd_argv[0]);
 				exit(EXIT_FAILURE);
 			}
 			else

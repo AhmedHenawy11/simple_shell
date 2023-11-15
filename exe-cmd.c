@@ -16,7 +16,7 @@ void execmd(char **argv)
 		actual_command = command_path(cmd);
 		if (actual_command == NULL)
 		{
-			fprintf(stderr, "%s: %d: %s: not found\n", argv[0], getpid(), cmd);
+			_fprintf(stderr, "%s: %d: %s: not found\n", argv[0], getpid(), cmd);
 			exit(EXIT_FAILURE);
 		}
 

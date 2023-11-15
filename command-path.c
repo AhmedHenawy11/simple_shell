@@ -11,7 +11,7 @@
 char *command_path(char *command)
 {
 	char *path_copy = get_path_copy();
-	int command_length = strlen(command);
+	int command_length = _strlen(command);
 	char *file_path = search_directories(path_copy, command, command_length);
 
 	if (!path_copy)
@@ -34,7 +34,7 @@ char *check_command_path(char *command)
 
 	if (stat(command, &buffer) == 0)
 	{
-		return (strdup(command));
+		return (_strdup(command));
 	}
 
 	return (NULL);

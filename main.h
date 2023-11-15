@@ -31,5 +31,31 @@ char **tokenize_user_input(char *user_input_line, int *tokens);
 void execute_command(char *user_input_line, char **cmd_argv, int tokens);
 void print_environment(void);
 
+
+char *_strdup(const char *s);
+
+
+int _strcasecmp(const char *s1, const char *s2);
+
+
+char *_strcpy(char *dest, const char *src);
+
+
+char *_strcat(char *dest, const char *src);
+
+
+int _fprintf(FILE *stream, const char *format, ...);
+
+
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+
+
+int _printf(const char *format, ...);
+
+
+int _strcmp(const char *s1, const char *s2);
+size_t _strlen(const char *s);
+char *my_getenv(const char *name);
+
 #endif
 
