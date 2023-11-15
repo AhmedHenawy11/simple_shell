@@ -11,14 +11,13 @@
 char *command_path(char *command)
 {
 	char *path_copy = get_path_copy();
+	int command_length = strlen(command);
+	char *file_path = search_directories(path_copy, command, command_length);
 
 	if (!path_copy)
 	{
 		return (NULL);
 	}
-
-	int command_length = strlen(command);
-	char *file_path = search_directories(path_copy, command, command_length);
 
 	free(path_copy);
 	return (file_path);

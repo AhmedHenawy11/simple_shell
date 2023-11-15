@@ -9,7 +9,8 @@
 void change_directory(const char *directory)
 {
     char *new_directory;
-
+    char *current_directory = getcwd(NULL, 0);
+    
     if (directory == NULL || strcmp(directory, "-") == 0)
     {
         new_directory = getenv("HOME");
@@ -22,8 +23,6 @@ void change_directory(const char *directory)
     {
         new_directory = (char *)directory;
     }
-
-    char *current_directory = getcwd(NULL, 0);
 
     if (current_directory == NULL)
     {
