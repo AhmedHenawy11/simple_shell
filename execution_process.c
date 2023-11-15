@@ -7,27 +7,24 @@
  */
 void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 {
-	if (_strlen(user_input_line) > 1)
+	if (strlen(user_input_line) > 1)
 	{
-		if (_strcmp(cmd_argv[0], "cd") == 0)
+		if (strcmp(cmd_argv[0], "cd") == 0)
 		{
-						if (cmd_argv[1] != NULL)
-						{
-								change_directory(cmd_argv[1]);
-						} else
-						{
-								change_directory(NULL);
-						}
-		}
-		else if (_strcmp(cmd_argv[0], "exit") == 0)
+			if (cmd_argv[1] != NULL)
+			{
+				change_directory(cmd_argv[1]);
+			} else
+			{
+				change_directory(NULL);
+			}
+		} else if (strcmp(cmd_argv[0], "exit") == 0)
 		{
 			terminate_shell();
-		}
-		else if (_strcmp(cmd_argv[0], "env") == 0)
+		} else if (strcmp(cmd_argv[0], "env") == 0)
 		{
 			print_environment();
-		}
-		else
+		} else
 		{
 			pid_t pid = fork();
 
@@ -37,17 +34,15 @@ void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 				free(user_input_line);
 				free_cmd_argv(cmd_argv, tokens);
 				exit(EXIT_FAILURE);
-			}
-			else if (pid == 0)
+			} else if (pid == 0)
 			{
 				execmd(cmd_argv);
 				perror("Execution failed");
-				_fprintf(stderr, "%s: command not found\n", cmd_argv[0]);
 				exit(EXIT_FAILURE);
-			}
-			else
+			} else
 			{
 				int status;
+
 				waitpid(pid, &status, 0);
 			}
 		}

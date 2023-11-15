@@ -13,7 +13,7 @@
 
 char **tokenize_user_input(char *user_input_line, int *tokens)
 {
-	char *user_input_cpy = malloc(sizeof(char) * _strlen(user_input_line));
+	char *user_input_cpy = malloc(sizeof(char) * strlen(user_input_line));
 	char **cmd_argv, *token;
 	int i = 0;
 
@@ -24,7 +24,7 @@ char **tokenize_user_input(char *user_input_line, int *tokens)
 		exit(EXIT_FAILURE);
 	}
 
-	_strcpy(user_input_cpy, user_input_line);
+	strcpy(user_input_cpy, user_input_line);
 	token = strtok(user_input_line, " \n");
 	for (; token != NULL; i++, (*tokens)++, token = strtok(NULL, " \n"))
 	{
@@ -40,7 +40,7 @@ char **tokenize_user_input(char *user_input_line, int *tokens)
 	token = strtok(user_input_cpy, " \n");
 	for (i = 0; token != NULL; i++, token = strtok(NULL, " \n"))
 	{
-		cmd_argv[i] = malloc(sizeof(char) * (_strlen(token) + 1));
+		cmd_argv[i] = malloc(sizeof(char) * (strlen(token) + 1));
 		if (!cmd_argv[i])
 		{
 			perror("tsh: memory allocation error");
@@ -48,7 +48,7 @@ char **tokenize_user_input(char *user_input_line, int *tokens)
 			free_cmd_argv(cmd_argv, i);
 			exit(EXIT_FAILURE);
 		}
-		_strcpy(cmd_argv[i], token);
+		strcpy(cmd_argv[i], token);
 	}
 	cmd_argv[i] = NULL;
 	free(user_input_cpy);
