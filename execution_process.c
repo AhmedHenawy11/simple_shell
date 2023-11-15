@@ -11,7 +11,13 @@ void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 	{
 		if (strcmp(cmd_argv[0], "cd") == 0)
 		{
-			// ... (unchanged)
+						if (cmd_argv[1] != NULL)
+						{
+								change_directory(cmd_argv[1]);
+						} else
+						{
+								change_directory(NULL);
+						}
 		}
 		else if (strcmp(cmd_argv[0], "exit") == 0)
 		{
@@ -36,10 +42,7 @@ void execute_command(char *user_input_line, char **cmd_argv, int tokens)
 			{
 				execmd(cmd_argv);
 				perror("Execution failed");
-
-				// Add an error message for command not found
 				fprintf(stderr, "%s: command not found\n", cmd_argv[0]);
-
 				exit(EXIT_FAILURE);
 			}
 			else
