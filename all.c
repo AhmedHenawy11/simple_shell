@@ -231,7 +231,7 @@ void terminate_shell(void)
 
 void shell_sympol(void)
 {
-	printf("$");
+	printf("(Henawy's_shell)$ ");
 }
 
 
