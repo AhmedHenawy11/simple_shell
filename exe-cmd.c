@@ -16,7 +16,7 @@ void execmd(char **argv)
 		actual_command = command_path(cmd);
 		if (actual_command == NULL)
 		{
-			fprintf(stderr, "%s: %d: %s: not found\n", argv[0], getpid(), cmd);
+			_fprintf(stderr, "%s: %d: %s: not found\n", argv[0], getpid(), cmd);
 			exit(EXIT_FAILURE);
 		}
 
@@ -37,13 +37,10 @@ void execmd(char **argv)
  * @tokens: length of tokens
  */
 
-void free_cmd_argv(char **cmd_argv, int tokens)
-{
+void free_cmd_argv(char **cmd_argv) {
 	int i;
-
-	for (i = 0; i < tokens; i++)
-	{
-		free(cmd_argv[i]);
-	}
-	free(cmd_argv);
+    for (i = 0; cmd_argv[i] != NULL; i++) {
+        free(cmd_argv[i]);
+    }
+    free(cmd_argv);
 }
