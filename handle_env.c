@@ -12,6 +12,6 @@ void print_environment(void)
 
 	for (env = environ; *env != NULL; env++)
 	{
-		_printf("%s\n", *env);
+		printf("%s\n", *env);
 	}
 }

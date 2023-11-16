@@ -9,20 +9,25 @@
  * Return: terminating the shell.
  */
 
-int main(void) {
-    char *user_input_line;
-    int tokens;
-    char **cmd_argv;
+int main(void)
+{
+	char *user_input_line;
+	int tokens;
+	char **cmd_argv;
 
-    while (1) {
-        shell_sympol(); 
+	while (1)
+	{
+		shell_sympol();
 
-        user_input_line = get_user_input_line();
-        tokens = 0;
-        cmd_argv = tokenize_user_input(user_input_line, &tokens);
+		user_input_line = get_user_input_line();
+		tokens = 0;
+		cmd_argv = tokenize_user_input(user_input_line, &tokens);
 
-        execute_command(user_input_line, cmd_argv, tokens);
-    }
+		execute_command(user_input_line, cmd_argv, tokens);
 
-    return 0;
+		free(user_input_line);
+		free_cmd_argv(cmd_argv, tokens);
+	}
+
+	return (0);
 }

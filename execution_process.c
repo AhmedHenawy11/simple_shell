@@ -5,41 +5,46 @@
  * @cmd_argv:       The tokenized command arguments.
  * @tokens:          The number of tokens in cmd_argv.
  */
-void execute_command(char *user_input_line, char **cmd_argv, int tokens) {
-    (void) tokens;
+void execute_command(char *user_input_line, char **cmd_argv, int tokens)
+{
+	if (strlen(user_input_line) > 1)
+	{
+		if (strcmp(cmd_argv[0], "cd") == 0)
+		{
+			if (cmd_argv[1] != NULL)
+			{
+				change_directory(cmd_argv[1]);
+			} else
+			{
+				change_directory(NULL);
+			}
+		} else if (strcmp(cmd_argv[0], "exit") == 0)
+		{
+			terminate_shell();
+		} else if (strcmp(cmd_argv[0], "env") == 0)
+		{
+			print_environment();
+		} else
+		{
+			pid_t pid = fork();
 
-    if (_strlen(user_input_line) > 1) {
-        if (_strcmp(cmd_argv[0], "cd") == 0) {
-            if (cmd_argv[1] != NULL) {
-                change_directory(cmd_argv[1]);
-            } else {
-                change_directory(NULL);
-            }
-        } else if (_strcmp(cmd_argv[0], "exit") == 0) {
-            terminate_shell();
-        } else if (_strcmp(cmd_argv[0], "env") == 0) {
-            print_environment();
-        } else {
-            pid_t pid = fork();
+			if (pid == -1)
+			{
+				perror("Fork failed");
+				free(user_input_line);
+				free_cmd_argv(cmd_argv, tokens);
+				exit(EXIT_FAILURE);
+			} else if (pid == 0)
+			{
+				execmd(cmd_argv);
+				perror("Execution failed");
+				exit(EXIT_FAILURE);
+			} else
+			{
+				int status;
 
-            if (pid == -1) {
-                perror("Fork failed");
-                free(user_input_line);
-                free_cmd_argv(cmd_argv);
-                exit(EXIT_FAILURE);
-            } else if (pid == 0) {
-                execmd(cmd_argv);
-                perror("Execution failed");
-                free(user_input_line);
-                free_cmd_argv(cmd_argv);
-                exit(EXIT_FAILURE);
-            } else {
-                int status;
-                waitpid(pid, &status, 0);
-            }
-        }
-    }
-
-    free(user_input_line);
-    free_cmd_argv(cmd_argv);
+				waitpid(pid, &status, 0);
+			}
+		}
+	}
 }

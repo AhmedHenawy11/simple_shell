@@ -15,7 +15,7 @@ char *get_user_input_line()
 
 	if (input_length == -1)
 	{
-		_printf("Shell terminated\n");
+		printf("Shell terminated\n");
 		free(user_input_line);
 		exit(EXIT_FAILURE);
 	}
